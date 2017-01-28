@@ -4,7 +4,7 @@ Serverless service which provides a basic CRUD scaffold.
 
 ## Installation
 
-Make sure that you use Serverless v1.
+Make sure that you use Serverless v1. You can install it with `npm install -g serverless`. It will look for AWS keys in the normal environment variables.
 
 1. Run `serverless install --url https://github.com/faunadb/serverless-crud` to install the service in your current working directory
 2. Next up cd into the service with `cd serverless-crud`
