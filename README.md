@@ -10,7 +10,7 @@ Make sure that you use Serverless v1. You can install it with `npm install -g se
 2. Next up cd into the service with `cd serverless-crud`
 3. Run `npm install`
 4. Create a database via https://fauna.com/serverless-cloud-sign-up
-5. Get a server access key secret for your database and paste it into `package.json` and `serverless.yml` in place of `MY_FAUNADB_SERVER_SECRET`
+5. Get a [server access key secret](https://fauna.com/tutorials/crud#getting-started-getting_access_to_the_database) for your database and paste it into `package.json` and `serverless.yml` in place of `MY_FAUNADB_SERVER_SECRET`
 6. Run `npm run setup-schema` to set up the database.
 7. Deploy with `serverless deploy`
 
