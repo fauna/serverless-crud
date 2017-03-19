@@ -9,7 +9,12 @@ const client = new faunadb.Client({
   secret: process.env.FAUNADB_SECRET
 });
 
-client.query(q.Create(q.Ref("classes"), { name: "todos" }))
+client.query(q.Create(q.Ref("classes"), {
+  name: "todos",
+  permissions: {
+    create : q.Ref("classes/users")
+  }
+}))
 .then(()=>{
   return client.query(
     q.Create(q.Ref("indexes"), {

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Serverless CRUD service",
   "config": {
-    "FAUNADB_SECRET": "FAUNADB_SECRET"
+    "FAUNADB_SECRET": "FAUNADB_SERVER_SECRET"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
