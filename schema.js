@@ -12,14 +12,18 @@ const client = new faunadb.Client({
 client.query(q.Create(q.Ref("classes"), {
   name: "todos",
   permissions: {
-    create : q.Ref("classes/users")
+    create : q.Ref("classes/users"),
+    write : q.Ref("classes/users")
   }
 }))
 .then(()=>{
   return client.query(
     q.Create(q.Ref("indexes"), {
       name: "all_todos",
-      source: q.Ref("classes/todos")
+      source: q.Ref("classes/todos"),
+      permissions: {
+        read : q.Ref("classes/users")
+      }
     }))
 })
 .then(console.log.bind(console))

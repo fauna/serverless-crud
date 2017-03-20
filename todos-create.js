@@ -11,8 +11,14 @@ module.exports = (event, callback) => {
   if (!client) {
     callback("not authorized");
   } else {
-    data.user = q.Select("ref",q.Get(q.Ref("classes/users/self")));
-    return client.query(q.Create(q.Ref("classes/todos"), { data }))
+    const me = q.Select("ref", q.Get(q.Ref("classes/users/self")));
+    data.user = me;
+    return client.query(q.Create(q.Ref("classes/todos"), {
+      data,
+      permissions : {
+        read : me
+      }
+     }))
     .then((response) => {
       console.log("success", response);
       callback(false, response);

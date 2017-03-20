@@ -11,7 +11,10 @@ module.exports = (event, callback) => {
   if (!client) {
     callback("not authorized");
   } else {
-    return client.query(q.Paginate(q.Match(q.Ref("indexes/all_todos"))))
+    return client.query(
+      q.Map(
+        q.Paginate(q.Match(q.Ref("indexes/all_todos"))),
+        (ref) => q.Select("data", q.Get(ref))))
     .then((response) => {
       console.log("success", response);
       callback(false, response);

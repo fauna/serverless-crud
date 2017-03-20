@@ -6,6 +6,10 @@ provider:
   region: us-east-1
   stage: dev
 
+package:
+  exclude:
+    - .git/**
+
 functions:
   create:
     handler: handler.create
