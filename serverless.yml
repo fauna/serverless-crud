@@ -45,6 +45,23 @@ functions:
               - X-Amz-Security-Token
             allowCredentials: true
           authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+  clear:
+    handler: handler.clear
+    events:
+      - http:
+          path: todos/clear
+          method: post
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
+          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
   readAll:
     handler: handler.readAll
     events:

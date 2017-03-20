@@ -4,18 +4,18 @@ const utils = require('./utils');
 const faunadb = require('faunadb');
 const q = faunadb.query;
 
-
 module.exports = (event, callback) => {
-  console.log("update todo", event);
-  const data = JSON.parse(event.body);
+  console.log("toggleAll todo", event);
   const client = utils.clientForEvent(event);
   if (!client) {
     callback("not authorized");
   } else {
-    return client.query(q.Update(q.Ref("classes/todos/"+event.pathParameters.id), {data : {
-      completed : data.completed,
-      title : data.title
-    }}))
+    return client.query(
+      q.Map(
+        q.Paginate(q.Match(q.Ref("indexes/all_todos"))),
+        (ref) => q.If(q.Select(["data", "completed"], q.Get(ref)),
+          q.Delete(q.Select("ref", q.Get(ref))),
+          true)))
     .then((response) => {
       console.log("success", response);
       callback(false, response);
