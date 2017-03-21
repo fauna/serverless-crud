@@ -14,6 +14,7 @@ module.exports.create = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -29,6 +30,7 @@ module.exports.readAll = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -44,6 +46,7 @@ module.exports.toggleAll = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -59,6 +62,7 @@ module.exports.clear = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -74,6 +78,7 @@ module.exports.readOne = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -89,6 +94,7 @@ module.exports.update = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),
@@ -104,6 +110,7 @@ module.exports.delete = (event, context, callback) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "OPTIONS,GET,PUT,POST,DELETE",
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify(result),

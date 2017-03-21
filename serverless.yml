@@ -2,9 +2,9 @@ service: serverless-crud
 
 provider:
   name: aws
+  environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
   runtime: nodejs4.3
   region: us-east-1
-  stage: dev
 
 package:
   exclude:
@@ -27,7 +27,7 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+          authorizer: ${self:provider.environment.AUTH_ARN}
   toggleAll:
     handler: handler.toggleAll
     events:
@@ -44,7 +44,7 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+          authorizer: ${self:provider.environment.AUTH_ARN}
   clear:
     handler: handler.clear
     events:
@@ -61,7 +61,7 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+          authorizer: ${self:provider.environment.AUTH_ARN}
   readAll:
     handler: handler.readAll
     events:
@@ -78,7 +78,7 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+          authorizer: ${self:provider.environment.AUTH_ARN}
   readOne:
     handler: handler.readOne
     events:
@@ -95,8 +95,12 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
-
+            methods:
+              - OPTIONS
+              - GET
+              - PUT
+              - DELETE
+          authorizer: ${self:provider.environment.AUTH_ARN}
   update:
     handler: handler.update
     events:
@@ -112,9 +116,13 @@ functions:
               - Authorization
               - X-Api-Key
               - X-Amz-Security-Token
+            methods:
+              - OPTIONS
+              - GET
+              - PUT
+              - DELETE
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
-
+          authorizer: ${self:provider.environment.AUTH_ARN}
   delete:
     handler: handler.delete
     events:
@@ -130,5 +138,10 @@ functions:
               - Authorization
               - X-Api-Key
               - X-Amz-Security-Token
+            methods:
+              - OPTIONS
+              - GET
+              - PUT
+              - DELETE
             allowCredentials: true
-          authorizer: arn:aws:lambda:us-east-1:957571668058:function:serverless-authentication-dev-authorize
+          authorizer: ${self:provider.environment.AUTH_ARN}
