@@ -1,6 +1,6 @@
 # Serverless CRUD
 
-Serverless service which provides a basic CRUD scaffold.
+Serverless service which provides a basic CRUD scaffold. This is written in JavaScript. [Here is a version written in Python](https://github.com/serverless/examples/tree/master/aws-python-rest-api-with-faunadb).
 
 ## Installation
 
